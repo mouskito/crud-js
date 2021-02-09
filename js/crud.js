@@ -7,16 +7,16 @@ $(document).ready(function () {
 function champsVides() {
 	var prenom = $('#prenom').val();
 	var nom = $('#nom').val();
-	var email = $('#email').val();
+	var email_saisi = $('#email').val();
 
-	if(prenom === '' || nom === '' || email === ''){
+	if(prenom === '' || nom === '' || email_saisi === ''){
 		console.log('Oups')
 	}else{
-		if(verifEmail(email) === false){
+		if(verifEmail(email_saisi) === false){
 			console.log('email déja présent');
 			$("#erreur").html('<p style="color:red"> Le mail existe déja</p>')
 		}else{
-			creationLigne(prenom,nom,email);
+			creationLigne(prenom,nom,email_saisi);
 		}
 	}
 }
@@ -41,7 +41,10 @@ function verifEmail(email) {
 	var nombre_ligne = table.rows.length -1;
 
 	for (var index = 1; index <= nombre_ligne; index++) {
+		
 		var email_tableau = table.getElementsByTagName('tr')[index].cells[3].innerHTML;
+		
+
 		console.log(email_tableau)
 
 		if(email === email_tableau){
